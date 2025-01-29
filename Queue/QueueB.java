@@ -32,6 +32,15 @@ public class QueueB {
             q.add(q.remove());
         }
     }
+    public static void queue_reversal(Queue<Integer> q){
+        Stack<Integer> st = new Stack<>();
+        while(!q.isEmpty()){
+            st.push(q.poll());
+        }
+        while(!st.isEmpty()){
+            q.add(st.pop());
+        }
+    }
     public static void main(String[] args){
         String  s = "aabbcssd";
         non_repreating(s);
