@@ -1,3 +1,4 @@
+package others;
 import java.util.*;
 public class Arraylist {
     public static int storeWater(ArrayList<Integer> list){

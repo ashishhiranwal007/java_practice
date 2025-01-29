@@ -1,4 +1,4 @@
-package bank;
+package others;
 import java.util.*;
 class Acounts{
     public String name;
