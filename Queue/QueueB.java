@@ -20,7 +20,18 @@ public class QueueB {
         }
         System.err.println();
 
-     }
+    }
+    public static void interleave(Queue<Integer> q){
+        Queue<Integer>q2 = new LinkedList<>();
+        int n =q.size();
+        for(int i =0;i<n/2;i++){
+            q2.add(q.remove());
+        }
+        while(!q2.isEmpty()){
+            q.add(q2.remove());
+            q.add(q.remove());
+        }
+    }
     public static void main(String[] args){
         String  s = "aabbcssd";
         non_repreating(s);
