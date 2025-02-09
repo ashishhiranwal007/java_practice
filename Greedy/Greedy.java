@@ -140,7 +140,19 @@ public class Greedy {
          }
       }
    }
-   
+   public static void indian_coins(int amount){
+      Integer coins[]={1,2,5,10,20,50,100,500,2000};
+      Arrays.sort(arr,Comparator.reverseOrder());
+      ArrayList<Integer> list = new ArrayList<>();
+      for(int i =0;i<coins.length;i++){
+         if(amount>=coins[i]){
+            while(amount>=coins[i]){
+               amount-=coins[i];
+               list.add(coins[i]);
+            }
+         }
+      }
+   }
    public static void main(String[] args) {
       // Test Case 1: Activity Selection (Without Sorting)
       int start[] = { 1, 3, 0, 5, 8, 5 };
