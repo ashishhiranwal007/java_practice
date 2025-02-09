@@ -124,7 +124,23 @@ public class Greedy {
          }  
       }
    }
-
+   public static void maximum_length_of_pairs_sum(int arr1[],int arr2[]){
+      int dp[][]=new int[arr1.length][2];
+      for(int i =0;i<dp.length;i++){
+         dp[i][1]=arr1[i];
+         dp[i][2]=arr2[i];
+      }
+      Arrays.sort(dp,Comparator.comparingInt(o->o[1]));
+      int max =1;
+      int lastend = dp[0][1];
+      for(int i =1;i<dp.length;i++){
+         if(dp[i][0]>=lastend){
+            lastend = dp[i][1];
+            max++;
+         }
+      }
+   }
+   
    public static void main(String[] args) {
       // Test Case 1: Activity Selection (Without Sorting)
       int start[] = { 1, 3, 0, 5, 8, 5 };
