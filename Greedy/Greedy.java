@@ -76,7 +76,7 @@ public class Greedy {
       // Sort by ratio in descending order
       Arrays.sort(ratio, (a, b) -> Double.compare(b[1], a[1]));
 
-      double totalValue = 0;
+      int totalValue = 0;
       int capacity = W;
 
       // Process items
@@ -94,6 +94,35 @@ public class Greedy {
       }
 
       System.out.println("Maximum Knapsack Value: " + totalValue);
+   }
+   public static String getFrequencyString(String str){
+      int freq[] =new int[26];
+      for(char ch : str.toCharArray()){
+         freq[ch - 'a']++;
+      }
+      StringBuilder sb = new StringBuilder();
+      char ch='a';
+      for(int i :freq){
+         sb.append(ch);
+         sb.append(freq[i]);
+         ch++;
+      }
+      return sb.toString();
+   }
+   public static void validAnagram(String[] str){
+      HashMap<String,ArrayList<String>> hp = new HashMap<>();
+      for(String chars : str){
+         String frequencyString = getFrequencyString(chars);
+         if(hp.containsKey(frequencyString)){
+            hp.get(frequencyString).add(chars);
+         }
+         else{
+            ArrayList<String> list = new ArrayList<>();
+            list.add(chars);
+            hp.put(frequencyString, list);
+            
+         }  
+      }
    }
 
    public static void main(String[] args) {
