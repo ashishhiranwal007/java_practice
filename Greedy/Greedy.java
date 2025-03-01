@@ -109,21 +109,6 @@ public class Greedy {
       }
       return sb.toString();
    }
-   public static void validAnagram(String[] str){
-      HashMap<String,ArrayList<String>> hp = new HashMap<>();
-      for(String chars : str){
-         String frequencyString = getFrequencyString(chars);
-         if(hp.containsKey(frequencyString)){
-            hp.get(frequencyString).add(chars);
-         }
-         else{
-            ArrayList<String> list = new ArrayList<>();
-            list.add(chars);
-            hp.put(frequencyString, list);
-            
-         }  
-      }
-   }
    public static void maximum_length_of_pairs_sum(int arr1[],int arr2[]){
       int dp[][]=new int[arr1.length][2];
       for(int i =0;i<dp.length;i++){
@@ -151,6 +136,20 @@ public class Greedy {
                list.add(coins[i]);
             }
          }
+      }
+   }
+   public static class Job{
+      int id ;int deadline;int profit;
+      public Job(int id ,int deadline,int profit ){
+         this.id = id;
+         this.deadline = deadline;
+         this.profit = profit;
+      }
+   }
+   public static void job_squencing_problem(int jobe[][]){
+      ArrayList<Job> jobs = new ArrayList<>();
+      for(int i =0;i<jobe.length;i++){
+         jobs.add(new Job(i,jobe[i][0],jobe[i][1]));
       }
    }
    public static void main(String[] args) {
