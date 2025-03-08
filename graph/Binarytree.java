@@ -83,19 +83,29 @@ public class Binarytree {
                     q.add(temp.right);
                 }
             }
+            System.out.println("Sum of the tree is: " + sum);  // Fix: Printing sum correctly
         }
-        System.out.println("Sum of the tree is: " + sum);  // Fix: Printing sum correctly
     }
-
+    static int maxdia = 0;
+    public static int diameter_of_a_tree(Node root){
+        if(root ==null) return 0;
+        int left = diameter_of_a_tree(root.left);
+        int right = diameter_of_a_tree(root.right);
+        maxdia= Math.max(maxdia,Math.max(left,right)+1);
+        return maxdia;
+    }
     public static int height_of_the_tree(Node root) {
-        if (root == null) return -1;  // Fix: Return -1 for an empty tree
+        if (root == null) return 0;  // Fix: Return -1 for an empty tree
         int left = height_of_the_tree(root.left);
         int right = height_of_the_tree(root.right);
         return Math.max(left, right) + 1;
     }
 
     public static void main(String[] args) {
-        int arr[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
+        int arr[] = {1, 2, -1, -1, -1}; 
+
+
+
         Binarytree tree = new Binarytree();
         Node root = Binary.buildtree(tree, arr);
         
@@ -105,5 +115,6 @@ public class Binarytree {
         levelorder(root);
         
         System.out.println("Height of the tree is: " + height_of_the_tree(root));
+        System.out.println("Diameter of the tree is:"+diameter_of_a_tree(root));
     }
 }
