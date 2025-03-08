@@ -89,10 +89,13 @@ public class Binarytree {
     static int maxdia = 0;
     public static int diameter_of_a_tree(Node root){
         if(root ==null) return 0;
-        int left = diameter_of_a_tree(root.left);
-        int right = diameter_of_a_tree(root.right);
-        maxdia= Math.max(maxdia,Math.max(left,right)+1);
-        return maxdia;
+        int leftdia = diameter_of_a_tree(root.left);
+        int rightdia = diameter_of_a_tree(root.right);
+
+        int leftheight = height_of_the_tree(root.left);
+        int rightheight = height_of_the_tree(root.right);
+        int selfdia = leftheight+rightheight+1;
+        return Math.max(selfdia,Math.max(leftdia,rightdia));
     }
     public static int height_of_the_tree(Node root) {
         if (root == null) return 0;  // Fix: Return -1 for an empty tree
