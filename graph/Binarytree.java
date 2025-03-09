@@ -87,10 +87,10 @@ public class Binarytree {
         }
     }
     static int maxdia = 0;
-    public static int diameter_of_a_tree(Node root){
+    public static int diameter_of_the_tree(Node root){
         if(root ==null) return 0;
-        int leftdia = diameter_of_a_tree(root.left);
-        int rightdia = diameter_of_a_tree(root.right);
+        int leftdia = diameter_of_the_tree(root.left);
+        int rightdia = diameter_of_the_tree(root.right);
 
         int leftheight = height_of_the_tree(root.left);
         int rightheight = height_of_the_tree(root.right);
@@ -103,7 +103,29 @@ public class Binarytree {
         int right = height_of_the_tree(root.right);
         return Math.max(left, right) + 1;
     }
-
+    public class Info{
+        int dia;
+        int ht;
+        Info(int dia,int ht){
+            this.dia = dia;
+            this.ht = ht;
+        }
+    }
+    public static Info diameter(Binarytree tree, Node root){
+        if(root==null){
+            return tree.new Info(0,0);
+        }
+        Info leftInfo = diameter(tree, root.left);
+        Info rightInfo = diameter(tree, root.right);
+        int leftd = leftInfo.dia;
+        int rightd= rightInfo.dia;
+        int lefth = leftInfo.ht;
+        int righth = rightInfo.ht;
+        int selfdia = leftInfo.ht+rightInfo.ht+1;
+        int maxdia = Math.max(selfdia,Math.max(leftd,rightd));
+        int height = Math.max(lefth,righth)+1;
+        return tree.new Info(maxdia, height);
+    }
     public static void main(String[] args) {
         int arr[] = {1, 2, -1, -1, -1}; 
 
@@ -118,6 +140,6 @@ public class Binarytree {
         levelorder(root);
         
         System.out.println("Height of the tree is: " + height_of_the_tree(root));
-        System.out.println("Diameter of the tree is:"+diameter_of_a_tree(root));
+        System.out.println("Diameter of the tree is:"+diameter(tree, root).dia);
     }
 }
