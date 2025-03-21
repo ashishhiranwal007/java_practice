@@ -126,6 +126,29 @@ public class Binarytree {
         int height = Math.max(lefth,righth)+1;
         return tree.new Info(maxdia, height);
     }
+    public static boolean isidentical(Node root,Node subroot){
+        if(root==null && subroot==null){
+            return true;
+        }
+        else if(root==null || subroot==null || root.data!=subroot.data){
+            return false;
+        }
+        if(!isidentical(root.left, subroot.left)){
+            return false;
+        }
+        if(!isidentical(root.right, subroot.right)){
+            return false;
+        }
+        return true;
+    }
+    public static boolean issubtree(Node root, Node subroot){
+        if(root.data==subroot.data){
+            if(isidentical(root,subroot)){
+                return true;
+            }
+        }
+        return issubtree(root.left, subroot) || issubtree(root.right, subroot);
+    }
     public static void main(String[] args) {
         int arr[] = {1, 2, -1, -1, -1}; 
 
